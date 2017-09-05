@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    list-style: none;
+}
+
+/*
+    * é para o reset
+    # é para elementos
+    . é para classes
+*/
+
+a{
+    text-decoration: none;
+}
+
+body{
+    font: 300 16px Oswald;
+    background-image: url(../img/camo.jpeg);
+    /*background: #212121;*/
+    /* background opcional */
+}
+
+#login{
+    width: 300px;
+    margin: 0 auto;
+    position:  relative;
+    top: 200px;
+    border: 1px solid #f1f1f1;
+    padding: 15px;
+    background: #fff;
+    /* background opcional */
+}
+
+/* Estilos para o botão de registro e logout do sistema */
+#cadastro{
+    border-bottom-left-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -moz-border-bottom-left-radius: 15px;
+    height: 40px;
+    width: 120px;
+    background: #f1f1f1;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+#cadastro a{
+    padding-top: 5px;
+    display: block;
+    color: #999;
+    font: 400 18px Oswald;
+}
+
+#cadastro:hover a{
+    color: #fff;
+}
+
+#cadastro:hover{
+    background: #33691e;
+    color: #fff;
+}
+
+.message{
+    width: 80%;
+    padding: 3px;
+    color: #666;
+    background: #f1f1f1;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilos para uso do botão de atacar pais */
+#ataque{
+  padding: 3px;
+  background: #8bc34a;
+  color: #000;
+  width: 50px;
+  height: 40px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+#ataque:hover{
+  background: #33691e;
+  color: #fff;
+}
+
+.logo{
+    width: 200px;
+    height: 58px;
+    margin: 0 auto;
+    padding: 7px;
+    position: relative;
+    top: 5px;
+}
+
+.flash{
+    width: 100%;
+    height: 40px;
+    background: #000;
+    opacity: 0.5;
+    text-align: center;
+    line-height: 40px;
+    font: 400 18px Oswald;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.form label{
+    display: block;
+    padding-top: 5px;
+}
+
+.acomodar{
+    margin: 0 auto;
+    width: 250px;
+}
+
+.conteudo{
+    text-align: center;
+    font: 400 20px Oswald;
+}
+
+.txt{
+    border: none;
+    height: 40px;
+    width: 250px;
+    border: thin solid #f1f1f1;
+}
+
+.txt:focus{
+    border: thin solid #33691e;
+    box-shadow: 0 2px 10px #33691e;
+    -webkit-box-shadow: 0 2px 10px #33691e;
+    -moz-box-shadow: 0 2px 10px #33691e;
+}
+
+.sb{
+    display: block;
+    border: none;
+    width: 250px;
+    height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+    font: 400 18px Oswald;
+    color: #999;
+}
+
+.sb:hover{
+    background: #33691e;
+    color: #fff;
+}
+
+/* Classes de Herança */
+.bradius{
+    /* deixa bordas arredondadas */
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
+
+.fleft{
+    float: left;
+}
+
+.fright{
+    float: right;
+}
+
+/* Multiplos Eslilos */
+.txt,.txt:focus,.sb,.sb:hover,#cadastro,#cadastro:hover,#ataque,#ataque:hover{
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+}
