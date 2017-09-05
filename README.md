@@ -11,7 +11,7 @@ Desafio do processo seletivo da empresa Chuva Inc.
 * **PoG** 
 
 ## Requisitos
-Requisitos funcionais do projeto
+Requisitos funcionais do Projeto.
 
 **Completo**
 
