@@ -21,6 +21,9 @@ if ($jogo->checaExistencia() == 0){
   //Definindo Vetores de Retorno para Usuário
   $Vusuario = $jogo->getPaisesUsuario();
   $Vcomputador = $jogo->getPaisesComputador();
+
+  //Gravando no Banco
+  $jogo->novoJogo($Vusuario, $Vcomputador);
 }
 else{
   //Implementar Método para carregar um jogo existente

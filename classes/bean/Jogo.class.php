@@ -99,6 +99,9 @@ class Jogo{
 
   }
 
+  /**
+    * @return retorna um vetor de países para o jogador ou computador
+    */
   function sortearPaises(){
     //função que sorteia paises para usuário e computador
     $selecao = array_rand($this->Vpaises, 6);
@@ -115,8 +118,52 @@ class Jogo{
 
   }
 
-  function novoJogo(){
+  function novoJogo($paisesUsuario, $paisesComputador){
     //Função que iniciará um novo jogo , distribuirá os paises e salvara no banco a nova partida
+    $conexao = new DB;
+    $conexao=$conexao->getConnection();
+    $rs = $conexao->prepare("INSERT INTO jogos(id_usuario, emJogo) VALUES(?, 1)");
+    $id = $this->usuario->getId();
+    $rs->bindParam(1,$id);
+    if ($rs->execute()){
+
+      $conexao = new DB;
+      $conexao=$conexao->getConnection();
+      $rs = $conexao->prepare("Select ID from jogos where id_usuario = ?");
+      $rs->bindParam(1,$id);
+      $rs->execute();
+      $row = $rs->fetch(PDO::FETCH_OBJ);
+      $idJogo = $row->ID;
+
+      foreach ($paisesUsuario as $key => $value) {
+
+        $pertence = "Jogador";
+        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
+        $rs->bindParam(1,$idJogo);
+        $rs->bindParam(2,$value->ID);
+        $rs->bindParam(3,$value->Nome);
+        $rs->bindParam(4,$value->tropas);
+        $rs->bindParam(5,$pertence);
+        $rs->execute();
+      }
+
+      foreach ($paisesComputador as $key => $value) {
+
+        $pertence = "Computador";
+        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
+        $rs->bindParam(1,$idJogo);
+        $rs->bindParam(2,$value->ID);
+        $rs->bindParam(3,$value->Nome);
+        $rs->bindParam(4,$value->tropas);
+        $rs->bindParam(5,$pertence);
+        $rs->execute();
+      }
+
+    }
+    else{
+
+    }
+
   }
 
   function carregaJogo(){

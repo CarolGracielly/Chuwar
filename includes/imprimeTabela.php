@@ -8,7 +8,6 @@
             <th>Nome</th>
             <th>Tropas</th>
             <th>Fronteiras</th>
-            <th>Ação</th>
         </tr>
 
         <?php
@@ -19,9 +18,6 @@
           <td style="text-align: center"><?php echo $value->Nome; ?></td>
           <td style="text-align: center"><?php echo $value->tropas; ?></td>
           <td style="text-align: center">Fronteira 1 fronteira 2 Fronteira 3</td>
-          <td style="text-align: center;">
-            <a id="ataque" href="index.php?acao=atacar" title="Ataque um pais">Atacar</a>
-          </td>
         </tr>
 
         <?php
