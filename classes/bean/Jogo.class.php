@@ -94,6 +94,7 @@ class Jogo{
         $objeto->setID($pais->ID);
         $objeto->setNome($pais->Nome);
         $objeto->setTropas($pais->tropas);
+        $objeto->setFronteiras($pais->fronteiras);
         $paises[] = $objeto; 
       }
 
@@ -155,14 +156,16 @@ class Jogo{
         $idPais = $value->getID();
         $nomePais = $value->getNome();
         $tropasPais = $value->getTropas();
+        $fronteirasPais = $value->getFronteiras();
 
         $pertence = "Jogador";
-        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
+        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence, fronteiras) VALUES(?,?,?,?,?,?)");
         $rs->bindParam(1,$idJogo);
         $rs->bindParam(2,$idPais);
         $rs->bindParam(3,$nomePais);
         $rs->bindParam(4,$tropasPais);
         $rs->bindParam(5,$pertence);
+        $rs->bindParam(6,$fronteirasPais);
         $rs->execute();
       }
 
@@ -172,14 +175,16 @@ class Jogo{
         $idPais = $value->getID();
         $nomePais = $value->getNome();
         $tropasPais = $value->getTropas();
+        $fronteirasPais = $value->getFronteiras();
 
         $pertence = "Computador";
-        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
+        $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence, fronteiras) VALUES(?,?,?,?,?,?)");
         $rs->bindParam(1,$idJogo);
         $rs->bindParam(2,$idPais);
         $rs->bindParam(3,$nomePais);
         $rs->bindParam(4,$tropasPais);
         $rs->bindParam(5,$pertence);
+        $rs->bindParam(6,$fronteirasPais);
         $rs->execute();
       }
 
@@ -217,6 +222,7 @@ class Jogo{
           $objeto->setID($pais->Pais_ID);
           $objeto->setNome($pais->Nome);
           $objeto->setTropas($pais->tropas);
+          $objeto->setFronteiras($pais->fronteiras);
           $paisesUs[] = $objeto; 
         }
 
@@ -236,6 +242,7 @@ class Jogo{
           $objeto->setID($pais->Pais_ID);
           $objeto->setNome($pais->Nome);
           $objeto->setTropas($pais->tropas);
+          $objeto->setFronteiras($pais->fronteiras);
           $paisesCp[] = $objeto; 
         }
 

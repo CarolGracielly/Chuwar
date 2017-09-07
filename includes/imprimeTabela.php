@@ -17,7 +17,7 @@
         <tr>
           <td style="text-align: center"><?php echo $value->getNome(); ?></td>
           <td style="text-align: center"><?php echo $value->getTropas(); ?></td>
-          <td style="text-align: center">Fronteira 1 fronteira 2 Fronteira 3</td>
+          <td style="text-align: center"><?php echo $value->getFronteiras(); ?></td>
         </tr>
 
         <?php
@@ -46,7 +46,7 @@
         <tr>
           <td style="text-align: center"><?php echo $value->getNome(); ?></td>
           <td style="text-align: center"><?php echo $value->getTropas(); ?></td>
-          <td style="text-align: center">Fronteira 1 fronteira 2 Fronteira 3</td>
+          <td style="text-align: center"><?php echo $value->getFronteiras(); ?></td>
         </tr>
 
         <?php

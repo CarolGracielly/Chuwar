@@ -5,6 +5,7 @@ class Pais{
 	private $ID;
 	private $Nome;
 	private $tropas;
+	private $fronteiras;
 
 	//Métodos Getter and Setter
 	function setID($id){
@@ -35,6 +36,16 @@ class Pais{
 	function getTropas(){
 
 		return  $this->tropas;
+	}
+
+	function setFronteiras($fronteiras){
+
+		$this->fronteiras = $fronteiras;
+	}
+
+	function getFronteiras(){
+
+		return $this->fronteiras;
 	} 
 }
 
