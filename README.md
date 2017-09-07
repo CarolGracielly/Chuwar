@@ -25,12 +25,11 @@ Requisitos funcionais do Projeto.
 
 * Na tela de partida, o usuário deve ver uma tabela com uma lista dos países, o dono do país (ele ou o computador) e o número de exércitos no país.
 
+* Na tela de partida, o usuário deve poder selecionar um ataque, sempre com um país de origem (seu) e um país de destino (do computador). A decisão de como será a interface de seleção do ataque fica por sua conta. Deve ser levado em consideração que o país de origem do ataque deve ter fronteira com o país de destino.
+
 **ToDo**
 
 * A cada jogada, cada jogador recebe 6 exércitos, distribuídos aleatoriamente pelo mapa.
-
-
-* Na tela de partida, o usuário deve poder selecionar um ataque, sempre com um país de origem (seu) e um país de destino (do computador). A decisão de como será a interface de seleção do ataque fica por sua conta. Deve ser levado em consideração que o país de origem do ataque deve ter fronteira com o país de destino.
 
 * Ao submeter o formulário, o ataque é processado. Por questão de simplicidade, a rodada é encerrada após a apuração desse ataque e, no mesmo request, o computador faz sua jogada.
 
