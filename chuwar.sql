@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Set-2017 às 20:28
+-- Generation Time: 07-Set-2017 às 20:39
 -- Versão do servidor: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -37,7 +37,9 @@ CREATE TABLE `jogos` (
 --
 
 INSERT INTO `jogos` (`ID`, `id_usuario`, `emJogo`) VALUES
-(14, 1, 1);
+(14, 1, 1),
+(15, 2, 1),
+(16, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,31 @@ INSERT INTO `status_paises` (`ID`, `Jogo_ID`, `Pais_ID`, `Nome`, `tropas`, `Pert
 (105, 14, 4, 'Brasil', 3, 'Computador', 'Argentina,Egito,Colombia'),
 (106, 14, 6, 'Colombia', 3, 'Computador', 'Brasil,Mexico'),
 (107, 14, 10, 'Mexico', 3, 'Computador', 'Colombia,EUA'),
-(108, 14, 12, 'Russia', 3, 'Computador', 'Alemanha,China,EUA');
+(108, 14, 12, 'Russia', 3, 'Computador', 'Alemanha,China,EUA'),
+(109, 15, 1, 'Africa do Sul', 3, 'Jogador', 'Egito'),
+(110, 15, 4, 'Brasil', 3, 'Jogador', 'Argentina,Egito,Colombia'),
+(111, 15, 6, 'Colombia', 3, 'Jogador', 'Brasil,Mexico'),
+(112, 15, 9, 'Franca', 3, 'Jogador', 'Alemanha,Reino Unido,Egito'),
+(113, 15, 10, 'Mexico', 3, 'Jogador', 'Colombia,EUA'),
+(114, 15, 11, 'Reino Unido', 3, 'Jogador', 'EUA,Franca,Alemanha'),
+(115, 15, 2, 'Alemanha', 3, 'Computador', 'Franca,Reino Unido,Egito,Russia'),
+(116, 15, 3, 'Argentina', 3, 'Computador', 'Brasil,Colombia'),
+(117, 15, 5, 'China', 3, 'Computador', 'Russia'),
+(118, 15, 7, 'Egito', 3, 'Computador', 'Franca,Alemanha,Brasil,Africa do Sul'),
+(119, 15, 8, 'EUA', 3, 'Computador', 'Mexico,Russia,Reino Unido'),
+(120, 15, 12, 'Russia', 3, 'Computador', 'Alemanha,China,EUA'),
+(121, 16, 1, 'Africa do Sul', 3, 'Jogador', 'Egito'),
+(122, 16, 5, 'China', 3, 'Jogador', 'Russia'),
+(123, 16, 7, 'Egito', 3, 'Jogador', 'Franca,Alemanha,Brasil,Africa do Sul'),
+(124, 16, 8, 'EUA', 3, 'Jogador', 'Mexico,Russia,Reino Unido'),
+(125, 16, 9, 'Franca', 3, 'Jogador', 'Alemanha,Reino Unido,Egito'),
+(126, 16, 12, 'Russia', 3, 'Jogador', 'Alemanha,China,EUA'),
+(127, 16, 2, 'Alemanha', 3, 'Computador', 'Franca,Reino Unido,Egito,Russia'),
+(128, 16, 3, 'Argentina', 3, 'Computador', 'Brasil,Colombia'),
+(129, 16, 4, 'Brasil', 3, 'Computador', 'Argentina,Egito,Colombia'),
+(130, 16, 6, 'Colombia', 3, 'Computador', 'Brasil,Mexico'),
+(131, 16, 10, 'Mexico', 3, 'Computador', 'Colombia,EUA'),
+(132, 16, 11, 'Reino Unido', 3, 'Computador', 'EUA,Franca,Alemanha');
 
 -- --------------------------------------------------------
 
@@ -162,12 +188,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `jogos`
 --
 ALTER TABLE `jogos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `status_paises`
 --
 ALTER TABLE `status_paises`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
