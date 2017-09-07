@@ -8,7 +8,7 @@ $usuario->setUsername($_SESSION["usuario"]);
 $usuario->setSenha($_SESSION["senha"]);
 
 //Imprimindo os 2 jogadores da partida na tela (Usuário e Computador)
-echo "<br>".$usuario->getNome()." Vs Computador <br><br>";
+echo "<br><b>".$usuario->getNome()." Vs Computador </b><br><br>";
 
 //Criando um novo jogo e checando se ha partida
 $jogo = new Jogo($usuario);

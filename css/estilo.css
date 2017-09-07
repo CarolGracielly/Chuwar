@@ -22,6 +22,12 @@ body{
     /* background opcional */
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: -8px;
+}
+
 #login{
     width: 300px;
     margin: 0 auto;
@@ -75,7 +81,8 @@ body{
 
 /* Estilos para uso do botão de atacar pais */
 #ataque{
-  padding: 3px;
+  padding: 2px;
+  margin: 2px;
   background: #8bc34a;
   color: #000;
   width: 50px;

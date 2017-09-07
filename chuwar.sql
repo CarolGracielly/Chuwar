@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Set-2017 às 16:54
+-- Generation Time: 07-Set-2017 às 20:28
 -- Versão do servidor: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -37,9 +37,7 @@ CREATE TABLE `jogos` (
 --
 
 INSERT INTO `jogos` (`ID`, `id_usuario`, `emJogo`) VALUES
-(11, 1, 1),
-(12, 2, 1),
-(13, 3, 1);
+(14, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -60,17 +58,17 @@ CREATE TABLE `paises` (
 
 INSERT INTO `paises` (`ID`, `Nome`, `tropas`, `fronteiras`) VALUES
 (1, 'Africa do Sul', 3, 'Egito'),
-(2, 'Alemanha', 3, 'Franca, Reino Unido, Egito, Russia'),
-(3, 'Argentina', 3, 'Brasil, Colombia'),
-(4, 'Brasil', 3, 'Argentina, Egito, Colombia'),
+(2, 'Alemanha', 3, 'Franca,Reino Unido,Egito,Russia'),
+(3, 'Argentina', 3, 'Brasil,Colombia'),
+(4, 'Brasil', 3, 'Argentina,Egito,Colombia'),
 (5, 'China', 3, 'Russia'),
-(6, 'Colombia', 3, 'Brasil, Mexico'),
-(7, 'Egito', 3, 'Franca, Alemanha, Brasil, Africa do Sul'),
-(8, 'EUA', 3, 'Mexico, Russia, Reino Unido'),
-(9, 'Franca', 3, 'Alemanha, Reino Unido, Egito'),
-(10, 'Mexico', 3, 'Colombia, EUA'),
-(11, 'Reino Unido', 3, 'EUA, Franca, Alemanha'),
-(12, 'Russia', 3, 'Alemanha, China, EUA');
+(6, 'Colombia', 3, 'Brasil,Mexico'),
+(7, 'Egito', 3, 'Franca,Alemanha,Brasil,Africa do Sul'),
+(8, 'EUA', 3, 'Mexico,Russia,Reino Unido'),
+(9, 'Franca', 3, 'Alemanha,Reino Unido,Egito'),
+(10, 'Mexico', 3, 'Colombia,EUA'),
+(11, 'Reino Unido', 3, 'EUA,Franca,Alemanha'),
+(12, 'Russia', 3, 'Alemanha,China,EUA');
 
 -- --------------------------------------------------------
 
@@ -93,42 +91,18 @@ CREATE TABLE `status_paises` (
 --
 
 INSERT INTO `status_paises` (`ID`, `Jogo_ID`, `Pais_ID`, `Nome`, `tropas`, `Pertence`, `fronteiras`) VALUES
-(61, 11, 2, 'Alemanha', 3, 'Jogador', 'Franca, Reino Unido, Egito, Russia'),
-(62, 11, 3, 'Argentina', 3, 'Jogador', 'Brasil, Colombia'),
-(63, 11, 4, 'Brasil', 3, 'Jogador', 'Argentina, Egito, Colombia'),
-(64, 11, 6, 'Colombia', 3, 'Jogador', 'Brasil, Mexico'),
-(65, 11, 7, 'Egito', 3, 'Jogador', 'Franca, Alemanha, Brasil, Africa do Sul'),
-(66, 11, 10, 'Mexico', 3, 'Jogador', 'Colombia, EUA'),
-(67, 11, 1, 'Africa do Sul', 3, 'Computador', 'Egito'),
-(68, 11, 5, 'China', 3, 'Computador', 'Russia'),
-(69, 11, 8, 'EUA', 3, 'Computador', 'Mexico, Russia, Reino Unido'),
-(70, 11, 9, 'Franca', 3, 'Computador', 'Alemanha, Reino Unido, Egito'),
-(71, 11, 11, 'Reino Unido', 3, 'Computador', 'EUA, Franca, Alemanha'),
-(72, 11, 12, 'Russia', 3, 'Computador', 'Alemanha, China, EUA'),
-(73, 12, 2, 'Alemanha', 3, 'Jogador', 'Franca, Reino Unido, Egito, Russia'),
-(74, 12, 3, 'Argentina', 3, 'Jogador', 'Brasil, Colombia'),
-(75, 12, 5, 'China', 3, 'Jogador', 'Russia'),
-(76, 12, 6, 'Colombia', 3, 'Jogador', 'Brasil, Mexico'),
-(77, 12, 9, 'Franca', 3, 'Jogador', 'Alemanha, Reino Unido, Egito'),
-(78, 12, 12, 'Russia', 3, 'Jogador', 'Alemanha, China, EUA'),
-(79, 12, 1, 'Africa do Sul', 3, 'Computador', 'Egito'),
-(80, 12, 4, 'Brasil', 3, 'Computador', 'Argentina, Egito, Colombia'),
-(81, 12, 7, 'Egito', 3, 'Computador', 'Franca, Alemanha, Brasil, Africa do Sul'),
-(82, 12, 8, 'EUA', 3, 'Computador', 'Mexico, Russia, Reino Unido'),
-(83, 12, 10, 'Mexico', 3, 'Computador', 'Colombia, EUA'),
-(84, 12, 11, 'Reino Unido', 3, 'Computador', 'EUA, Franca, Alemanha'),
-(85, 13, 2, 'Alemanha', 3, 'Jogador', 'Franca, Reino Unido, Egito, Russia'),
-(86, 13, 3, 'Argentina', 3, 'Jogador', 'Brasil, Colombia'),
-(87, 13, 6, 'Colombia', 3, 'Jogador', 'Brasil, Mexico'),
-(88, 13, 8, 'EUA', 3, 'Jogador', 'Mexico, Russia, Reino Unido'),
-(89, 13, 9, 'Franca', 3, 'Jogador', 'Alemanha, Reino Unido, Egito'),
-(90, 13, 12, 'Russia', 3, 'Jogador', 'Alemanha, China, EUA'),
-(91, 13, 1, 'Africa do Sul', 3, 'Computador', 'Egito'),
-(92, 13, 4, 'Brasil', 3, 'Computador', 'Argentina, Egito, Colombia'),
-(93, 13, 5, 'China', 3, 'Computador', 'Russia'),
-(94, 13, 7, 'Egito', 3, 'Computador', 'Franca, Alemanha, Brasil, Africa do Sul'),
-(95, 13, 10, 'Mexico', 3, 'Computador', 'Colombia, EUA'),
-(96, 13, 11, 'Reino Unido', 3, 'Computador', 'EUA, Franca, Alemanha');
+(97, 14, 1, 'Africa do Sul', 3, 'Jogador', 'Egito'),
+(98, 14, 5, 'China', 3, 'Jogador', 'Russia'),
+(99, 14, 7, 'Egito', 3, 'Jogador', 'Franca,Alemanha,Brasil,Africa do Sul'),
+(100, 14, 8, 'EUA', 3, 'Jogador', 'Mexico,Russia,Reino Unido'),
+(101, 14, 9, 'Franca', 3, 'Jogador', 'Alemanha,Reino Unido,Egito'),
+(102, 14, 11, 'Reino Unido', 3, 'Jogador', 'EUA,Franca,Alemanha'),
+(103, 14, 2, 'Alemanha', 3, 'Computador', 'Franca,Reino Unido,Egito,Russia'),
+(104, 14, 3, 'Argentina', 3, 'Computador', 'Brasil,Colombia'),
+(105, 14, 4, 'Brasil', 3, 'Computador', 'Argentina,Egito,Colombia'),
+(106, 14, 6, 'Colombia', 3, 'Computador', 'Brasil,Mexico'),
+(107, 14, 10, 'Mexico', 3, 'Computador', 'Colombia,EUA'),
+(108, 14, 12, 'Russia', 3, 'Computador', 'Alemanha,China,EUA');
 
 -- --------------------------------------------------------
 
@@ -188,12 +162,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `jogos`
 --
 ALTER TABLE `jogos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `status_paises`
 --
 ALTER TABLE `status_paises`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
