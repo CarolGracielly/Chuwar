@@ -22,6 +22,7 @@
     //INCLUDE DAS CLASSES PARA USO DE MANIPULAÇÃO DE DADOS
     include("classes/bean/Usuario.class.php");  //Classe Responsável para armazenar dados do usuário logado e seus países
     include("classes/bean/Computador.class.php"); //Classe Responsável para armazenar países do computador
+    include("classes/bean/Pais.class.php"); //Classe Responsável por servir como estrutura para vetor de retornopara usuário
     include("classes/bean/Jogo.class.php"); //Classe Responsável de controlar o fluxo do jogo
 
     //OBS- Conexão com banco realizada somente em classes DAO

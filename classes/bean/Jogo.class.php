@@ -86,8 +86,18 @@ class Jogo{
     $rs = $conexao->prepare("SELECT * FROM paises");
     if ($rs->execute()){
 
-      $row = $rs->fetchAll(PDO::FETCH_OBJ);
-      return $row;
+      $paises = [];
+        
+      while($pais = $rs->fetch(PDO::FETCH_OBJ)){
+
+        $objeto = new Pais();
+        $objeto->setID($pais->ID);
+        $objeto->setNome($pais->Nome);
+        $objeto->setTropas($pais->tropas);
+        $paises[] = $objeto; 
+      }
+
+      return $paises;
 
     }
     else{
@@ -118,6 +128,10 @@ class Jogo{
 
   }
 
+  /**
+    * @param paisesUsuario recebe o vetor de países que pertence ao usuário
+    * @param paisesComputador recebe o vetor de países que pertence ao computador
+    */
   function novoJogo($paisesUsuario, $paisesComputador){
     //Função que iniciará um novo jogo , distribuirá os paises e salvara no banco a nova partida
     $conexao = new DB;
@@ -137,24 +151,34 @@ class Jogo{
 
       foreach ($paisesUsuario as $key => $value) {
 
+        //Definindo Variáveis para o php parar de encher o saco
+        $idPais = $value->getID();
+        $nomePais = $value->getNome();
+        $tropasPais = $value->getTropas();
+
         $pertence = "Jogador";
         $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
         $rs->bindParam(1,$idJogo);
-        $rs->bindParam(2,$value->ID);
-        $rs->bindParam(3,$value->Nome);
-        $rs->bindParam(4,$value->tropas);
+        $rs->bindParam(2,$idPais);
+        $rs->bindParam(3,$nomePais);
+        $rs->bindParam(4,$tropasPais);
         $rs->bindParam(5,$pertence);
         $rs->execute();
       }
 
       foreach ($paisesComputador as $key => $value) {
 
+        //Definindo Variáveis para o php parar de encher o saco
+        $idPais = $value->getID();
+        $nomePais = $value->getNome();
+        $tropasPais = $value->getTropas();
+
         $pertence = "Computador";
         $rs = $conexao->prepare("INSERT INTO status_paises(Jogo_ID, Pais_ID, Nome, tropas, Pertence) VALUES(?,?,?,?,?)");
         $rs->bindParam(1,$idJogo);
-        $rs->bindParam(2,$value->ID);
-        $rs->bindParam(3,$value->Nome);
-        $rs->bindParam(4,$value->tropas);
+        $rs->bindParam(2,$idPais);
+        $rs->bindParam(3,$nomePais);
+        $rs->bindParam(4,$tropasPais);
         $rs->bindParam(5,$pertence);
         $rs->execute();
       }
@@ -185,8 +209,18 @@ class Jogo{
       $rs->bindParam(1,$idJogo);
       $rs->execute();
       if($rs->rowCount() > 0){
-        $rowU = $rs->fetchall(PDO::FETCH_OBJ);
-        $this->usuario->setPaises($rowU);
+
+        $paisesUs = [];
+        while($pais = $rs->fetch(PDO::FETCH_OBJ)){
+
+          $objeto = new Pais();
+          $objeto->setID($pais->Pais_ID);
+          $objeto->setNome($pais->Nome);
+          $objeto->setTropas($pais->tropas);
+          $paisesUs[] = $objeto; 
+        }
+
+        $this->usuario->setPaises($paisesUs);
       }
 
       //Recuperando Países do Computador
@@ -194,8 +228,18 @@ class Jogo{
       $rs->bindParam(1,$idJogo);
       $rs->execute();
       if($rs->rowCount() > 0){
-        $rowC = $rs->fetchall(PDO::FETCH_OBJ);
-        $this->computador->setPaises($rowC);
+        
+        $paisesCp = [];
+        while($pais = $rs->fetch(PDO::FETCH_OBJ)){
+
+          $objeto = new Pais();
+          $objeto->setID($pais->Pais_ID);
+          $objeto->setNome($pais->Nome);
+          $objeto->setTropas($pais->tropas);
+          $paisesCp[] = $objeto; 
+        }
+
+        $this->computador->setPaises($paisesCp);
       }
     
 
