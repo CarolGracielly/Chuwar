@@ -27,6 +27,11 @@ if ($jogo->checaExistencia() == 0){
 }
 else{
   //Implementar Método para carregar um jogo existente
+  $jogo->carregaJogo();	
+
+  //Definindo Vetores de Retorno para Usuário
+  $Vusuario = $jogo->getPaisesUsuario();
+  $Vcomputador = $jogo->getPaisesComputador();
 }
 
 ?>

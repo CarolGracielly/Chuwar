@@ -161,13 +161,51 @@ class Jogo{
 
     }
     else{
-
+      //erro ao salvar dados, defeito está na conexão com o banco
+      $flash="OPS!... ouve algum erro em nosso Sistema. Por Favor contate administrador!";
+      echo $flash;
     }
 
   }
 
   function carregaJogo(){
     //função que carrega um jogo existente, restaurando da ultima rodada feita
+    $conexao = new DB;
+    $conexao=$conexao->getConnection();
+    $rs = $conexao->prepare("Select ID from jogos where id_usuario = ?");
+    $id = $this->usuario->getId();  //Recupera id do usuário
+    $rs->bindParam(1,$id);
+    if ($rs->execute()){
+      
+      $row = $rs->fetch(PDO::FETCH_OBJ);
+      $idJogo = $row->ID;  //Recupera ID do jogo
+
+      //Recuperando Países do usuário
+      $rs = $conexao->prepare("SELECT * from status_paises WHERE Jogo_ID = ? and Pertence = 'Jogador'");
+      $rs->bindParam(1,$idJogo);
+      $rs->execute();
+      if($rs->rowCount() > 0){
+        $rowU = $rs->fetchall(PDO::FETCH_OBJ);
+        $this->usuario->setPaises($rowU);
+      }
+
+      //Recuperando Países do Computador
+      $rs = $conexao->prepare("SELECT * from status_paises WHERE Jogo_ID = ? and Pertence = 'Computador'");
+      $rs->bindParam(1,$idJogo);
+      $rs->execute();
+      if($rs->rowCount() > 0){
+        $rowC = $rs->fetchall(PDO::FETCH_OBJ);
+        $this->computador->setPaises($rowC);
+      }
+    
+
+    }
+    else{
+      //erro ao carregar dados, defeito está na conexão com o banco
+      $flash="OPS!... ouve algum erro em nosso Sistema. Por Favor contate administrador!";
+      echo $flash;
+    }
+
   }
 
 }
