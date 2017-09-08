@@ -105,6 +105,20 @@
 		}
 
 		function sortearExercitos(){
+			//Distribui 6 tropas aleatóriamente para os 2 jogadores
+			for ($i = 0; $i < 6; $i++){
+
+				$pos = rand(0, 5);
+				$this->paisesUs[$pos]->incrementar();
+
+			}
+
+			for ($i = 0; $i < 6; $i++){
+
+				$pos = rand(0, 5);
+				$this->paisesCp[$pos]->incrementar();
+
+			}
 
 		}
 

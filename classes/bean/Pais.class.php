@@ -46,6 +46,16 @@ class Pais{
 	function getFronteiras(){
 
 		return $this->fronteiras;
+	}
+
+	function incrementar(){
+
+		$this->tropas++;
+	}
+
+	function decrementar(){
+
+		$this->tropas--;
 	} 
 }
 
