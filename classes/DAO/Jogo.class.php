@@ -106,16 +106,29 @@
 
 		function sortearExercitos(){
 			//Distribui 6 tropas aleatóriamente para os 2 jogadores
+
+			//Definindo quantos países cad ausuário tem
+			$CountUs = count($this->paisesUs) - 1;
+			$CountCp = count($this->paisesCp) - 1;
+
 			for ($i = 0; $i < 6; $i++){
 
-				$pos = rand(0, 5);
+				do{
+					$pos = rand(0, $CountUs);
+					
+				}while(!isset($this->paisesUs[$pos]));
+
 				$this->paisesUs[$pos]->incrementar();
 
 			}
 
 			for ($i = 0; $i < 6; $i++){
 
-				$pos = rand(0, 5);
+				do{
+					$pos = rand(0, $CountCp);
+					
+				}while(!isset($this->paisesCp[$pos]));
+				
 				$this->paisesCp[$pos]->incrementar();
 
 			}
