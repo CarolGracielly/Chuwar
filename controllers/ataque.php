@@ -28,6 +28,7 @@
 
 			//Realizando ações ofensivas (OBS - #$!%$#@$%)
 			$dao->atacarInimigo();
+			$dao->atualizarDB();
 		}        
             
     }

@@ -65,6 +65,8 @@
 			}
 			else{
 
+				//Atualizando Tropas do Inimigo
+				$this->paisesCp[$paisDefensor]->setTropas($tropasInimigas);
 				//Retornando fracasso para o usuário
 				return false;
 			}
@@ -105,6 +107,60 @@
 		function sortearExercitos(){
 
 		}
+
+		function atualizarDB(){
+
+    		
+			//Recuperando Save do jogo no banco de dados
+			$id = $this->idUsuario;
+      		$conexao = new DB;
+		    $conexao=$conexao->getConnection();
+		    $rs = $conexao->prepare("Select ID from jogos where id_usuario = ? and emJogo = 1");
+		    $rs->bindParam(1,$id);
+		    if ($rs->execute()){
+		    	
+		    	$row = $rs->fetch(PDO::FETCH_OBJ);
+		    	$idJogo = $row->ID;
+
+		      	foreach ($this->paisesUs as $key => $value) {
+
+			        //Definindo Variáveis para o php parar de encher o saco
+			        $tropas = $value->getTropas();
+			        $pertence = "Jogador";
+			        $paisId = $value->getID();
+
+			        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
+			        $rs->bindParam(1,$tropas);
+			        $rs->bindParam(2,$pertence);
+			        $rs->bindParam(3,$idJogo);
+			        $rs->bindParam(4,$paisId);
+			        $rs->execute();
+		      	}
+
+		      	foreach ($this->paisesCp as $key => $value) {
+
+			        //Definindo Variáveis para o php parar de encher o saco
+			        $tropas = $value->getTropas();
+			        $pertence = "Computador";
+			        $paisId = $value->getID();
+
+			        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
+			        $rs->bindParam(1,$tropas);
+			        $rs->bindParam(2,$pertence);
+			        $rs->bindParam(3,$idJogo);
+			        $rs->bindParam(4,$paisId);
+			        $rs->execute();
+		      	}
+
+    		}
+    		else{
+
+      			//erro ao salvar dados, defeito está na conexão com o banco
+      			$flash="OPS!... ouve algum erro em nosso Sistema. Por Favor contate administrador!";
+      			echo $flash;
+    		}
+
+	}
 
 	}
 
