@@ -31,10 +31,15 @@
 
                   $nomePais = $p->getNome();
 
+                  //Definindo Id's
+                  $idAtacante = $value->getID();
+                  $idDefensor = $p->getID();
+
+
                   if(strcmp($valor, $nomePais) == 0){
                     
                     //Adicionando Sistemas de Verificação se o seuspaises tem contado com o inimigo
-                    echo '<a id="ataque" href="!#">'.$nomePais.'</a>';
+                    echo '<a id="ataque" href="index.php?acao=atacar&amp;idAtacante='.$idAtacante.'&idDefensor='.$idDefensor.'">'.$nomePais.'</a>';
 
 
                   }

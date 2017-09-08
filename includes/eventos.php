@@ -34,6 +34,7 @@
         include("controllers/cadastro.php");
         include("controllers/logar.php");
         include("controllers/logout.php");
+        include("controllers/ataque.php");
 
     }
 
