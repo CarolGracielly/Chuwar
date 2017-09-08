@@ -24,7 +24,10 @@
 			$paisesCp = $Batalha->getPaisesComputador();
 
 			//Instanciando Data Acess Object
-			$dao = new JogoDAO($paisesUs, $paisesCp, $Atacante, $Defensor);
+			$dao = new JogoDAO($U->getId(),$paisesUs, $paisesCp, $Atacante, $Defensor);
+
+			//Realizando ações ofensivas (OBS - #$!%$#@$%)
+			$dao->atacarInimigo();
 		}        
             
     }
