@@ -18,6 +18,7 @@
     //INCLUDE DAS CLASSES PARA USO DE CONEXÕES COM O BANCO
     include("classes/DAO/DB.class.php");    //Classe de Conexão
     include("classes/DAO/Usuarios.class.php");  //Classe DAO de Usuários
+    include("classes/DAO/Jogo.class.php");  //Classe DAO para Jogo
 
     //INCLUDE DAS CLASSES PARA USO DE MANIPULAÇÃO DE DADOS
     include("classes/bean/Usuario.class.php");  //Classe Responsável para armazenar dados do usuário logado e seus países

@@ -5,7 +5,7 @@
 <table width="100%" border="0">
 
         <tr>
-            <th>Nome</th>
+            <th>País</th>
             <th>Tropas</th>
             <th>Fronteiras</th>
             <th>Atacar</th>
@@ -67,7 +67,7 @@
 <table width="100%" border="0">
 
         <tr>
-            <th>Nome</th>
+            <th>País</th>
             <th>Tropas</th>
             <th>Fronteiras</th>
         </tr>
