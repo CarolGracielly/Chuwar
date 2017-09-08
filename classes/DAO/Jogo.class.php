@@ -90,16 +90,17 @@
 
 					//Recuperando informações necessárias
 					$DestinoKey = $key;	//Recupera posição no vetor
+					$nomePais = $this->paisesCp[$DestinoKey]->getNome();
 				}
 			}
 
 			if($this->ocuparPais($OrigemKey, $DestinoKey)){	//Caso o ataque ocorrer mas você conquistar o país
 
-				$msg = "Você Conquistou o País Inimigo!";
+				return "Você Conquistou o País Inimigo (".$nomePais.")! <br>";
 			}
 			else{	//Caso o ataque ocorreu mas você perdeu a batalha
 
-				$msg = "Você Falhou o ataque contra o País Inimigo!";
+				return "Você Falhou em capturar o País (".$nomePais.")! <br>";
 			}
 
 		}
@@ -128,7 +129,7 @@
 					$pos = rand(0, $CountCp);
 					
 				}while(!isset($this->paisesCp[$pos]));
-				
+
 				$this->paisesCp[$pos]->incrementar();
 
 			}

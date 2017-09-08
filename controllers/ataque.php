@@ -1,6 +1,9 @@
 <?php
 
 	if($acao=="atacar"){   //Método de aprovar usuário
+
+		//Definindo o relatório de retorno
+		$msg = "RELATÓRIO DE BATALHA <br>";
             
         //Recuperando ID's dos paises atacante e defensor
         $Atacante=$_GET["idAtacante"];
@@ -27,8 +30,10 @@
 			$dao = new JogoDAO($U->getId(),$paisesUs, $paisesCp, $Atacante, $Defensor);
 
 			//Realizando ações ofensivas (OBS - #$!%$#@$%)
-			$dao->atacarInimigo();
+			$msg .= $dao->atacarInimigo();
 			$dao->sortearExercitos();
+			$msg .= "---Você Recebeu 6 tropas---<br>";
+			$msg .= "---Computador Recebeu 6 tropas---<br>";
 			$dao->atualizarDB();
 		}        
             
