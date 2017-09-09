@@ -7,6 +7,12 @@ Versão em php do classico jogo war
 ## Objetivo
 Desafio do processo seletivo da empresa Chuva Inc.
 
+## Acessibilidade
+Há um usuário de Testes ja gravado no arquivo sql commitado, se quiser usa-lo para jogar o login é:
+
+**Usuário:** Teste01
+**Senha:** 123456789
+
 ## Metodologia
 * **PoG** 
 
