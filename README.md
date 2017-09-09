@@ -35,9 +35,7 @@ Requisitos funcionais do Projeto.
 
 * Logo em seguida, estamos em uma nova rodada. É exibido para o usuário a mesma tela da partida, com os resultados dos ataques e a tela atualizada para ele poder fazer nova jogada.
 
-* O computador vai sempre fazer o ataque em que tenha a maior vantagem em número de exércitos do país de origem sobre o país de destino. Por exemplo, se ele tiver a possibilidade de atacar de um país de 10 sobre um país com 5 exércitos, versus a possibilidade de atacar de um país de 8 sobre um de 1, ele vai escolher a segunda opção. (PARCIALMENTE)
-
-**ToDo**
+* O computador vai sempre fazer o ataque em que tenha a maior vantagem em número de exércitos do país de origem sobre o país de destino. Por exemplo, se ele tiver a possibilidade de atacar de um país de 10 sobre um país com 5 exércitos, versus a possibilidade de atacar de um país de 8 sobre um de 1, ele vai escolher a segunda opção.
 
 * O jogo se encerra quando um dos jogadores tiver sido destruído.
 
