@@ -187,12 +187,36 @@
 
 		}
 
-		function verificaAtaque(){
+		function calcularEstrategia($possibilidades){
+			//Verifica qual é a melhor jogada a ser feita
+			$melhor = $possibilidades[0]; //Por padrão a melhor sempre começará sendo a primeira
+			$melhorVantagem = 0;
+
+			foreach ($possibilidades as $key => $value) {
+				
+				$tropasAliadas = $value["tropasAtacante"];
+				$tropasInimigas	= $value["tropasDefensor"];
+
+				if ($tropasAliadas - $tropasInimigas > $melhorVantagem){
+
+					$melhorVantagem = $tropasAliadas - $tropasInimigas;
+					$melhor = $value;
+				}
+
+			}
+
+			//Setando o ataque com melhor vantagem
+			$this->OrigemCp = $melhor["atacante"];
+			$this->AlvoCp = $melhor["defensor"];
+
+		}
+
+		function carregarPossibilidades(){
+
+			$possibilidades = [];
 
 			//Função que analisa qual é a melhor tatica
           	foreach ($this->paisesCp as $key => $value) {
-     			
-    
 
 		            $front = $value->getFronteiras();
 		            $listaFronteiras = explode(",", $front);
@@ -204,17 +228,25 @@
 		                  $nomePais = $p->getNome();
 		                  $idAtacante = $value->getID();
 		                  $idDefensor = $p->getID();
+		                  $tropasAtacante = $value->getTropas();
+		                  $tropasDefensor = $p->getTropas();
 
 
 		                  if(strcmp($valor, $nomePais) == 0){
 		                    //Possível Ataque
-		                  	$this->OrigemCp = $idAtacante;
-		                  	$this->AlvoCp = $idDefensor;
+		                  	$possibilidades[] = [
+		                  		"atacante" => $idAtacante,
+		                  		"defensor" => $idDefensor,
+		                  		"tropasAtacante" => $tropasAtacante,
+		                  		"tropasDefensor" => $tropasDefensor
+		                  	];
 		                  }
 		                }            
 		            }
 	           
           }
+
+          return $possibilidades;
          
 		}
 
@@ -246,6 +278,8 @@
 				$this->paisesCp[$pos]->incrementar();
 
 			}
+
+			return "---Você Recebeu 6 tropas---<br>---Computador Recebeu 6 tropas---<br>";
 
 		}
 
