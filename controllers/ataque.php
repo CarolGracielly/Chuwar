@@ -67,47 +67,19 @@
 			    	$conexao=$conexao->getConnection();
 
 			    	//Primeiramente Recuperando Jogo que estava sendo usado
-			    	$rs = $conexao->prepare("Select ID from jogos where id_usuario = ? and emJogo = 1");
-			    	$rs->bindParam(1,$id);
-			    	$rs->execute();
-			    	$row = $rs->fetch(PDO::FETCH_OBJ);
-			    	$idJogo = $row->ID;
-
-			    	//Segundamente Removendo o jogo
-			    	$rs = $conexao->prepare("DELETE FROM jogos where id_usuario = ?");
+			    	$rs = $conexao->prepare("UPDATE jogos SET emJogo = 0 where id_usuario = ? AND emJogo = 1");
 			    	$rs->bindParam(1,$id);
 			    	$rs->execute();
 
-			    	//Finalmente Removendo o save do jogo completado
-			    	$rs = $conexao->prepare("DELETE FROM status_paises where Jogo_ID = ?");
-			    	$rs->bindParam(1,$idJogo);
-			    	$rs->execute();
 
 				}
 				else if (count($paisesUs) == 0){
 
 					$msg = "---VOCE PERDEU---<br>Uma Nova Partida foi Iniciada para você";
 
-					//Reiniciando o Jogo
-					$id = $U->getId();
-					$conexao = new DB;
-			    	$conexao=$conexao->getConnection();
-
-			    	//Primeiramente Recuperando Jogo que estava sendo usado
-			    	$rs = $conexao->prepare("Select ID from jogos where id_usuario = ? and emJogo = 1");
+					//Primeiramente Recuperando Jogo que estava sendo usado
+			    	$rs = $conexao->prepare("UPDATE jogos SET emJogo = 0 where id_usuario = ? AND emJogo = 1");
 			    	$rs->bindParam(1,$id);
-			    	$rs->execute();
-			    	$row = $rs->fetch(PDO::FETCH_OBJ);
-			    	$idJogo = $row->ID;
-
-			    	//Segundamente Removendo o jogo
-			    	$rs = $conexao->prepare("DELETE FROM jogos where id_usuario = ?");
-			    	$rs->bindParam(1,$id);
-			    	$rs->execute();
-
-			    	//Finalmente Removendo o save do jogo completado
-			    	$rs = $conexao->prepare("DELETE FROM status_paises where Jogo_ID = ?");
-			    	$rs->bindParam(1,$idJogo);
 			    	$rs->execute();
 				}
 

@@ -144,7 +144,7 @@ class Jogo{
 
       $conexao = new DB;
       $conexao=$conexao->getConnection();
-      $rs = $conexao->prepare("Select ID from jogos where id_usuario = ?");
+      $rs = $conexao->prepare("Select ID from jogos where id_usuario = ? and emJogo = 1");
       $rs->bindParam(1,$id);
       $rs->execute();
       $row = $rs->fetch(PDO::FETCH_OBJ);
@@ -201,7 +201,7 @@ class Jogo{
     //função que carrega um jogo existente, restaurando da ultima rodada feita
     $conexao = new DB;
     $conexao=$conexao->getConnection();
-    $rs = $conexao->prepare("Select ID from jogos where id_usuario = ?");
+    $rs = $conexao->prepare("Select ID from jogos where id_usuario = ? and emJogo = 1");
     $id = $this->usuario->getId();  //Recupera id do usuário
     $rs->bindParam(1,$id);
     if ($rs->execute()){
