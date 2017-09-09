@@ -8,6 +8,8 @@
 		private $Defensor = NULL;
 		private $paisesUs = NULL;
 		private $paisesCp = NULL;
+		private $OrigemCp = NULL;
+		private $AlvoCp = NULL;
 
 		//Método Construtor Padrão da Classe
 		function __construct($id, $PU, $PC, $At, $Df){
@@ -31,8 +33,8 @@
 		*/
 
 		/**
-		  * @param $paisOrigem objeto do tipo país referente a quem ataca
-		  * @param $paisDefensor objeto do tipo país referente a quem defende
+		  * @param $paisOrigem indice referente a quem ataca
+		  * @param $paisDefensor indice referente a quem defende
 		  * @return retorna true se conquistou o pais ou false se falhou
 		  */
 		function ocuparPais($paisOrigem, $paisDefensor){
@@ -103,6 +105,117 @@
 				return "Você Falhou em capturar o País (".$nomePais.")! <br>";
 			}
 
+		}
+
+		function tomarPais($paisOrigem, $paisDefensor){
+
+			$tropasAliadas = $this->paisesCp[$paisOrigem]->getTropas();	//Recebe número de tropas das forças aliadas (Computador)
+			$tropasInimigas = $this->paisesUs[$paisDefensor]->getTropas();	//Recebe número de tropas das forças inimigas (usuário)
+
+			for ($i = 1; $i <= $tropasAliadas; $i++){
+				//Realizando o ataque ao país inimigo
+				$dado = rand(1, 10);
+
+				if ($dado > 5){
+
+					$tropasInimigas--;
+				}
+			}
+
+			if ($tropasInimigas <= 0){
+
+				$tropasInimigas = 1;	//Ocupa o país deixando um soldado no país ocupado
+
+				//Transferindo o país para o novo dono
+				$this->paisesUs[$paisDefensor]->setTropas($tropasInimigas);
+				$OBJ = $this->paisesUs[$paisDefensor];	//Recuperando o país
+				unset($this->paisesUs[$paisDefensor]);	//Removendo-o do computador
+				$this->paisesCp[] = $OBJ;
+
+				//Retornando Sucesso para o usuário
+				return true;
+			}
+			else{
+
+				//Atualizando Tropas do Inimigo
+				$this->paisesUs[$paisDefensor]->setTropas($tropasInimigas);
+				//Retornando fracasso para o usuário
+				return false;
+			}
+
+
+		}
+
+		/**
+		  * @param $paisOrigem indice referente a quem ataca
+		  * @param $paisDefensor indice referente a quem defende
+		  * @return retorna true se conquistou o pais ou false se falhou
+		  */
+		function contraAtacar(){
+
+			foreach ($this->paisesCp as $key => $value) {
+
+				if (isset($this->paisesCp[$key])){
+				
+					if($value->getID() == $this->OrigemCp){
+
+						//Recuperando informações necessárias
+						$OrigemKey = $key;	//Recupera posição no vetor
+					}
+				}
+			}
+
+			foreach ($this->paisesUs as $key => $value) {
+
+					if($value->getID() == $this->AlvoCp){
+
+						//Recuperando informações necessárias
+						$DestinoKey = $key;	//Recupera posição no vetor
+						$nomePais = $this->paisesUs[$DestinoKey]->getNome();
+					}
+		
+			}
+
+			if($this->tomarPais($OrigemKey, $DestinoKey)){	//Caso o ataque ocorrer mas você conquistar o país
+
+				return "Computador conquistou seu pais (".$nomePais.")! <br>";
+			}
+			else{	//Caso o ataque ocorreu mas você perdeu a batalha
+
+				return "Computador Falhou em capturar seu País (".$nomePais.")! <br>";
+			}
+
+		}
+
+		function verificaAtaque(){
+
+			//Função que analisa qual é a melhor tatica
+          	foreach ($this->paisesCp as $key => $value) {
+     			
+    
+
+		            $front = $value->getFronteiras();
+		            $listaFronteiras = explode(",", $front);
+		            
+		            foreach ($listaFronteiras as $item => $valor){
+
+		                foreach ($this->paisesUs as $pais => $p) {
+
+		                  $nomePais = $p->getNome();
+		                  $idAtacante = $value->getID();
+		                  $idDefensor = $p->getID();
+
+
+		                  if(strcmp($valor, $nomePais) == 0){
+		                    //Possível Ataque
+		                  	$this->OrigemCp = $idAtacante;
+		                  	$this->AlvoCp = $idDefensor;
+		                  }
+		                }            
+		            }
+	           
+          }
+         
 		}
 
 		function sortearExercitos(){

@@ -31,6 +31,8 @@
 
 			//Realizando ações ofensivas (OBS - #$!%$#@$%)
 			$msg .= $dao->atacarInimigo();
+			$dao->verificaAtaque();
+			$msg .= $dao->contraAtacar();
 			$dao->sortearExercitos();
 			$msg .= "---Você Recebeu 6 tropas---<br>";
 			$msg .= "---Computador Recebeu 6 tropas---<br>";
