@@ -44,7 +44,15 @@
 			else{
 
 				$fim = true;
+
 			}
+
+			//Veridicação Final para ver se usuário foi ou não aniquilado
+			if (count($paisesUs) == 0){
+
+				$fim = true;
+			}
+
 			$dao->atualizarDB();
 
 			if ($fim){
