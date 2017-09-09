@@ -34,12 +34,21 @@
 			//Realizando ações ofensivas (OBS - #$!%$#@$%)
 			$msg .= $dao->atacarInimigo();
 				
-			if (count($paisesCp) > 1){
+			if (count($paisesCp) > 1){	//Se o computador possuir somente um país e ele foi atacado e perdeu end game para computador
 					
 					$ataquesPossiveis = $dao->carregarPossibilidades();
 					$dao->calcularEstrategia($ataquesPossiveis);
-					$msg .= $dao->contraAtacar();
-					$msg .= $dao->sortearExercitos();
+
+					if (count($paisesUs) > 1){	//Se o computador possuir somente um país e ele foi atacado (com certeza foi) e perdeu end game para usuário
+
+						$msg .= $dao->contraAtacar();
+						$msg .= $dao->sortearExercitos();
+					}
+					else{
+
+						$fim = true;
+					}
+					
 			}
 			else{
 
@@ -47,19 +56,14 @@
 
 			}
 
-			//Veridicação Final para ver se usuário foi ou não aniquilado
-			if (count($paisesUs) == 0){
-
-				$fim = true;
-			}
 
 			$dao->atualizarDB();
 
 			if ($fim){
 
-				if (count($paisesCp == 0)){
+				if (count($paisesCp == 1)){
 
-					$msg = "---VOCE GANHOU---<br>Uma Nova Partida foi Iniciada para você";
+					$msg = "---FIM DE JOGO---<br>Uma Nova Partida foi Iniciada para você";
 
 					//Reiniciando o Jogo
 					$id = $U->getId();
@@ -73,9 +77,9 @@
 
 
 				}
-				else if (count($paisesUs) == 0){
+				else if (count($paisesUs) == 1){
 
-					$msg = "---VOCE PERDEU---<br>Uma Nova Partida foi Iniciada para você";
+					$msg = "---FIM DE JOGO---<br>Uma Nova Partida foi Iniciada para você";
 
 					//Primeiramente Recuperando Jogo que estava sendo usado
 			    	$rs = $conexao->prepare("UPDATE jogos SET emJogo = 0 where id_usuario = ? AND emJogo = 1");
