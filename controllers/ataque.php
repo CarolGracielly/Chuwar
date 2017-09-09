@@ -27,7 +27,6 @@
 			$paisesUs = $Batalha->getPaisesUsuario();
 			$paisesCp = $Batalha->getPaisesComputador();
 
-
 			//Instanciando Data Acess Object
 			$dao = new JogoDAO($U->getId(),$paisesUs, $paisesCp, $Atacante, $Defensor);
 
@@ -38,54 +37,30 @@
 					
 					$ataquesPossiveis = $dao->carregarPossibilidades();
 					$dao->calcularEstrategia($ataquesPossiveis);
-
+					
 					if (count($paisesUs) > 1){	//Se o computador possuir somente um país e ele foi atacado (com certeza foi) e perdeu end game para usuário
 
 						$msg .= $dao->contraAtacar();
 						$msg .= $dao->sortearExercitos();
 					}
-					else{
-
-						$fim = true;
-					}
 					
 			}
-			else{
-
-				$fim = true;
-
-			}
-
-
+			
 			$dao->atualizarDB();
 
-			if ($fim){
+			if (count($paisesCp) == 1 || count($paisesUs) == 1){
 
-				if (count($paisesCp == 1)){
-
-					$msg = "---FIM DE JOGO---<br>Uma Nova Partida foi Iniciada para você";
+					$msg .= "<br>---FIM DE JOGO---<br>Uma Nova Partida foi Iniciada para você";
 
 					//Reiniciando o Jogo
 					$id = $U->getId();
 					$conexao = new DB;
 			    	$conexao=$conexao->getConnection();
 
-			    	//Primeiramente Recuperando Jogo que estava sendo usado
+			    	//Inativando o jogo
 			    	$rs = $conexao->prepare("UPDATE jogos SET emJogo = 0 where id_usuario = ? AND emJogo = 1");
 			    	$rs->bindParam(1,$id);
 			    	$rs->execute();
-
-
-				}
-				else if (count($paisesUs) == 1){
-
-					$msg = "---FIM DE JOGO---<br>Uma Nova Partida foi Iniciada para você";
-
-					//Primeiramente Recuperando Jogo que estava sendo usado
-			    	$rs = $conexao->prepare("UPDATE jogos SET emJogo = 0 where id_usuario = ? AND emJogo = 1");
-			    	$rs->bindParam(1,$id);
-			    	$rs->execute();
-				}
 
 			}
 

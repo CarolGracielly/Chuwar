@@ -308,35 +308,41 @@
 		    	$row = $rs->fetch(PDO::FETCH_OBJ);
 		    	$idJogo = $row->ID;
 
-		      	foreach ($this->paisesUs as $key => $value) {
+		    	if (count($this->paisesUs) > 0){
 
-			        //Definindo Variáveis para o php parar de encher o saco
-			        $tropas = $value->getTropas();
-			        $pertence = "Jogador";
-			        $paisId = $value->getID();
+			      	foreach ($this->paisesUs as $key => $value) {
 
-			        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
-			        $rs->bindParam(1,$tropas);
-			        $rs->bindParam(2,$pertence);
-			        $rs->bindParam(3,$idJogo);
-			        $rs->bindParam(4,$paisId);
-			        $rs->execute();
-		      	}
+				        //Definindo Variáveis para o php parar de encher o saco
+				        $tropas = $value->getTropas();
+				        $pertence = "Jogador";
+				        $paisId = $value->getID();
 
-		      	foreach ($this->paisesCp as $key => $value) {
+				        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
+				        $rs->bindParam(1,$tropas);
+				        $rs->bindParam(2,$pertence);
+				        $rs->bindParam(3,$idJogo);
+				        $rs->bindParam(4,$paisId);
+				        $rs->execute();
+			      	}
+			    }
 
-			        //Definindo Variáveis para o php parar de encher o saco
-			        $tropas = $value->getTropas();
-			        $pertence = "Computador";
-			        $paisId = $value->getID();
+			    if (count($this->paisesCp) > 0){
 
-			        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
-			        $rs->bindParam(1,$tropas);
-			        $rs->bindParam(2,$pertence);
-			        $rs->bindParam(3,$idJogo);
-			        $rs->bindParam(4,$paisId);
-			        $rs->execute();
-		      	}
+			      	foreach ($this->paisesCp as $key => $value) {
+
+				        //Definindo Variáveis para o php parar de encher o saco
+				        $tropas = $value->getTropas();
+				        $pertence = "Computador";
+				        $paisId = $value->getID();
+
+				        $rs = $conexao->prepare("UPDATE status_paises SET tropas = ?, Pertence = ? WHERE Jogo_ID = ? and Pais_ID = ?");
+				        $rs->bindParam(1,$tropas);
+				        $rs->bindParam(2,$pertence);
+				        $rs->bindParam(3,$idJogo);
+				        $rs->bindParam(4,$paisId);
+				        $rs->execute();
+			      	}
+			    }
 
     		}
     		else{
