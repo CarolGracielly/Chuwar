@@ -50,6 +50,11 @@
 
 					$tropasInimigas--;
 				}
+				else{
+
+					//Perdeu a tropa vacilão kkkk
+					$tropasAliadas--;
+				}
 			}
 
 			if ($tropasInimigas <= 0){
@@ -57,6 +62,11 @@
 				$tropasInimigas = 1;	//Ocupa o país deixando um soldado no país ocupado
 
 				//Transferindo o país para o novo dono
+				$tropasAliadas--;
+				if($tropasAliadas <= 0){
+					$tropasAliadas = 0;
+				}
+				$this->paisesUs[$paisOrigem]->setTropas($tropasAliadas);
 				$this->paisesCp[$paisDefensor]->setTropas($tropasInimigas);
 				$OBJ = $this->paisesCp[$paisDefensor];	//Recuperando o país
 				unset($this->paisesCp[$paisDefensor]);	//Removendo-o do computador
@@ -67,7 +77,8 @@
 			}
 			else{
 
-				//Atualizando Tropas do Inimigo
+				//Atualizando Tropas do Inimigo e Usuário
+				$this->paisesUs[$paisOrigem]->setTropas($tropasAliadas);
 				$this->paisesCp[$paisDefensor]->setTropas($tropasInimigas);
 				//Retornando fracasso para o usuário
 				return false;
