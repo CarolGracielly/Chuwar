@@ -36,6 +36,7 @@
         include("controllers/logar.php");
         include("controllers/logout.php");
         include("controllers/ataque.php");
+        include("controllers/reset.php");
 
     }
 

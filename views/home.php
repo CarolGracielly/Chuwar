@@ -7,6 +7,7 @@
 
     <body>
 
+        <div id="reset"> <a href="index.php?acao=reset" title="Reiniciar o Jogo"> Reiniciar &raquo; </a> </div>
         <div id="cadastro"><a href="index.php?acao=logout" title="Faça logout no Sistema!">Logout &raquo;</a></div>
         <div id="login" class="form bradius" style="top:50px; width: 80%;">
 

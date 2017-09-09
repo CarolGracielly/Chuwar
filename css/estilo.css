@@ -70,6 +70,37 @@ table {
     color: #fff;
 }
 
+/* Estilos para o botão de Resetar Jogo */
+#reset{
+    border-bottom-right-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    -moz-border-bottom-right-radius: 15px;
+    height: 40px;
+    width: 120px;
+    background: #f1f1f1;
+    text-align: center;
+    position: absolute;
+    left: : 0;
+    top: 0;
+    z-index: 2;
+}
+
+#reset a{
+    padding-top: 5px;
+    display: block;
+    color: #999;
+    font: 400 18px Oswald;
+}
+
+#reset:hover a{
+    color: #fff;
+}
+
+#reset:hover{
+    background: #33691e;
+    color: #fff;
+}
+
 .message{
     width: 80%;
     padding: 3px;
@@ -182,7 +213,7 @@ table {
 }
 
 /* Multiplos Eslilos */
-.txt,.txt:focus,.sb,.sb:hover,#cadastro,#cadastro:hover,#ataque,#ataque:hover{
+.txt,.txt:focus,.sb,.sb:hover,#cadastro,#cadastro:hover,#reset,#reset:hover,#ataque,#ataque:hover{
     transition: all 0.5s linear;
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;

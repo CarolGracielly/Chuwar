@@ -73,6 +73,7 @@
 				if($value->getID() == $this->Atacante){
 					//Recuperando informações necessárias
 					$OrigemKey = $key;	//Recupera posição no vetor
+					$nomeAtk = $this->paisesUs[$OrigemKey]->getNome();
 				}
 			}
 			foreach ($this->paisesCp as $key => $value) {
@@ -84,10 +85,10 @@
 				}
 			}
 			if($this->ocuparPais($OrigemKey, $DestinoKey)){	//Caso o ataque ocorrer mas você conquistar o país
-				return "Você Conquistou o País Inimigo (".$nomePais.")! <br>";
+				return "Você(".$nomeAtk.") Conquistou o País Inimigo (".$nomePais.")! <br>";
 			}
 			else{	//Caso o ataque ocorreu mas você perdeu a batalha
-				return "Você Falhou em capturar o País (".$nomePais.")! <br>";
+				return "Você(".$nomeAtk.") Falhou em capturar o País (".$nomePais.")! <br>";
 			}
 		}
 		function tomarPais($paisOrigem, $paisDefensor){
@@ -129,6 +130,7 @@
 					if($value->getID() == $this->OrigemCp){
 						//Recuperando informações necessárias
 						$OrigemKey = $key;	//Recupera posição no vetor
+						$nomeAtk = $this->paisesCp[$OrigemKey]->getNome();
 					}
 				}
 			}
@@ -141,10 +143,10 @@
 		
 			}
 			if($this->tomarPais($OrigemKey, $DestinoKey)){	//Caso o ataque ocorrer mas você conquistar o país
-				return "Computador conquistou seu pais (".$nomePais.")! <br>";
+				return "Computador(".$nomeAtk.") conquistou seu pais (".$nomePais.")! <br>";
 			}
 			else{	//Caso o ataque ocorreu mas você perdeu a batalha
-				return "Computador Falhou em capturar seu País (".$nomePais.")! <br>";
+				return "Computador(".$nomeAtk.") Falhou em capturar seu País (".$nomePais.")! <br>";
 			}
 		}
 		function calcularEstrategia($possibilidades){
