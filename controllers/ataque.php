@@ -41,7 +41,7 @@
 			$dao->atualizarDB();
 			if (count($paisesCp) == 1){
 
-					$msg = "<br>---FIM DE JOGO---<br>---VOCÊ ENCURRALOU OS EXERCÍTOS INIMIGOS---<br>Uma Nova Partida foi Iniciada para você";
+					$msg = "---FIM DE JOGO---<br>---VOCÊ ENCURRALOU OS EXERCÍTOS INIMIGOS---<br>Uma Nova Partida foi Iniciada para você";
 					//Reiniciando o Jogo
 					$id = $U->getId();
 					$conexao = new DB;
@@ -53,7 +53,7 @@
 			}
 			if (count($paisesUs) == 1){
 
-					$msg = "<br>---FIM DE JOGO---<br>---SEU UNICO PAÍS FICOU TOTALMENTE VUNERÁVEL!---<br>Uma Nova Partida foi Iniciada para você";
+					$msg = "---FIM DE JOGO---<br>---SEU UNICO PAÍS FICOU TOTALMENTE VUNERÁVEL!---<br>Uma Nova Partida foi Iniciada para você";
 					//Reiniciando o Jogo
 					$id = $U->getId();
 					$conexao = new DB;
